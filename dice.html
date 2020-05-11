@@ -3,9 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+    <title>Dungeon Buddy</title>
 </head>
 <body>
-    
+    <header>
+        <!-- bootstrap jumbotron -->
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+              <h1 class="display-4" id="pageTitle">Dungeon Buddy</h1>
+              <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+            </div>
+          </div>
+        <!-- bootstrap navbar -->
+        <nav class="nav nav-pills flex-column flex-sm-row">
+            <a class="flex-sm-fill text-sm-center nav-link" href="index.html">Home Page</a>
+            <a class="flex-sm-fill text-sm-center nav-link active" href="dice.html">Dice Roll</a>
+            <a class="flex-sm-fill text-sm-center nav-link" href="abilities.html">Abilities</a>
+            <a class="flex-sm-fill text-sm-center nav-link" href="character.html">Characters</a>
+          </nav>
+    </header>
+
+    <article class="container">
+        <section class="row">
+            <div class="col-12">
+                <select id="diceValue">
+                    <option value="">Select your dice</option>
+                    <option value="4">4</option>
+                    <option value="6">6</option>
+                    <option value="8">8</option>
+                    <option value="10">10</option>
+                    <option value="12">12</option>
+                    <option value="20">20</option>
+                    <option value="100">Percentile</option>
+                  </select>
+            </div>
+        </section>
+        <!-- Button -->
+        <section class="row">
+            <div class="col-12">
+                <button id="rollButton">Roll</button>
+            </div>
+        </section>
+        <!-- text area -->
+        <section class="row">
+            <div class="col-12">
+                <h1 id="rollValue"></h1>
+            </div>
+
+        </section>
+    </article>
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="assets/dice.js"></script>
+
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>

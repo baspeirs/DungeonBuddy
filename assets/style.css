@@ -1,0 +1,37 @@
+#pageTitle {
+    font-family: 'Permanent Marker', cursive;
+
+}
+
+#diceValue {
+    width: 90%;
+    height: 60px;
+    border-radius: 5px;
+    font-size: 40px;
+    margin-top: 20px;
+}
+
+#rollButton {
+    height: 60px;
+    width: 50%;
+    border-radius: 10px;
+    font-size: 40px;
+    margin-top: 20px;
+}
+
+.row {
+    text-align: center;
+}
+body {
+    background-color: rgb(107, 107, 107);
+}
+
+#rollValueDiv {
+    background-color: white;
+    width: 35%;
+    padding: 10px;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 20px;
+    font-size: 60px;
+}
