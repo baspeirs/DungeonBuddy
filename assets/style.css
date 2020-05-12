@@ -11,19 +11,24 @@
     margin-top: 20px;
 }
 
-#rollButton {
+#rollButton, #clearAppliedStats, #generateStats {
     height: 60px;
     width: 50%;
-    border-radius: 10px;
     font-size: 40px;
+    margin-top: 20px;
+}
+.statButton {
+    height: 40px;
+    font-size: 20px;
     margin-top: 20px;
 }
 
 .row {
     text-align: center;
 }
-body {
-    background-color: rgb(107, 107, 107);
+.col-4 {
+    font-size: 26px;
+    font-weight: bold;
 }
 
 #rollValueDiv {
@@ -35,3 +40,4 @@ body {
     margin-top: 20px;
     font-size: 60px;
 }
+

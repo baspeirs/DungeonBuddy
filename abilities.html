@@ -14,7 +14,6 @@
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
               <h1 class="display-4" id="pageTitle">Dungeon Buddy</h1>
-              <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
             </div>
           </div>
         <!-- bootstrap navbar -->
@@ -25,5 +24,44 @@
             <a class="flex-sm-fill text-sm-center nav-link" href="character.html">Characters</a>
           </nav>
     </header>
+
+    <article class="container">
+      <section class="row">
+        <div class="col-8"><h3>Strength</h3></div>
+        <div class="col-4" id="strValue"></div>
+      </section>
+      <section class="row">
+        <div class="col-8"><h3>Dexterity</h3></div>
+        <div class="col-4" id="dexValue"></div>
+      </section>
+      <section class="row">
+        <div class="col-8"><h3>Constitution</h3></div>
+        <div class="col-4" id="conValue"></div>
+      </section>
+      <section class="row">
+        <div class="col-8"><h3>Intelligence</h3></div>
+        <div class="col-4" id="intValue"></div>
+      </section>
+      <section class="row">
+        <div class="col-8"><h3>Wisdom</h3></div>
+        <div class="col-4" id="wisValue"></div>
+      </section>
+      <section class="row">
+        <div class="col-8"><h3>Charisma</h3></div>
+        <div class="col-4" id="chrValue"></div>
+      </section>
+      <!-- generate stats button -->
+      <section class="row">
+        <div class="col-12" id="actionButtonDiv">
+          <button type="button" class="btn btn-dark" id="generateStats"><h3>Generate Stats</h3></button>
+        </div>
+      </section>
+      <!-- new section to add buttons from script-->
+      <section class="row" id="addStatButton">
+      </section>
+    </article>
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="assets/abilities.js"></script>
 </body>
 </html>
