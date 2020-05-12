@@ -1,3 +1,16 @@
+html {
+    height: 100%;
+}
+body {
+    background-image: url("./tobias-tullius-PXXtq6bp6cs-unsplash.jpg");
+    background-repeat: no-repeat, repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    
+}
 #pageTitle {
     font-family: 'Permanent Marker', cursive;
 
@@ -26,10 +39,15 @@
 .row {
     text-align: center;
 }
-.col-4 {
+.abilitiesCol {
     font-size: 26px;
     font-weight: bold;
+    background-color: rgb(220, 231, 241);
+    border-bottom: solid black;
+    margin-top: 20px;
+    opacity: 75%;
 }
+
 
 #rollValueDiv {
     background-color: white;
@@ -41,3 +59,36 @@
     font-size: 60px;
 }
 
+article {
+    min-height: 100%;
+}
+
+footer {
+    background-color: black;
+    color: blanchedalmond;
+    margin-top: auto;
+}
+
+#homeIntro {
+    font-family: 'Permanent Marker', cursive;
+    background-color: rgb(220, 231, 241);
+    opacity: 50%;
+    font-size: 72px;
+    margin-top: 20px;
+}
+
+#homeSub {
+    font-family: serif;
+    background-color: rgb(220, 231, 241);
+    opacity: 50%;
+    font-size: 52;
+    margin-top: 20px;
+}
+
+#comingSoon {
+    font-family: 'Permanent Marker', cursive;
+    background-color: rgb(220, 231, 241);
+    opacity: 50%;
+    font-size: 72px;
+    margin-top: 20px;
+}
