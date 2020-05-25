@@ -33,14 +33,20 @@ $("#generateStats").on("click", function() {
     }
     // loop through array
     for (let i = 0; i <generatedStats.length; i++) {
+        // create a div each time
+        let statDiv = $("<div>")
+        // apply attributes
+        statDiv.attr("class", "col-2")
         // create a button each time
         var statButton = $("<button>");
         // apply attributes
-        statButton.attr("class", "col-2 statButton");
+        statButton.attr("class", "statButton");
         // apply the text
         statButton.text(generatedStats[i]);
-        // append the button
-        $("#addStatButton").append(statButton);
+        // append the button to the div
+        statDiv.append(statButton)
+        // append the div to the page
+        $("#addStatButton").append(statDiv);
     }
 })
 
@@ -59,10 +65,13 @@ $("#addStatButton").on("click", ".statButton", function() {
     generatedStats.splice(indexClick, 1);
     // loop and re-append remaning buttons
     for (let i = 0; i <generatedStats.length; i++) {
-        var statButton = $("<button>");
-        statButton.attr("class", "col-2 statButton");
+        let statDiv = $("<div>");
+        statDiv.attr("class", "col-2")
+        let statButton = $("<button>");
+        statButton.attr("class", "statButton")
         statButton.text(generatedStats[i]);
-        $("#addStatButton").append(statButton);
+        statDiv.append(statButton);
+        $("#addStatButton").append(statDiv);
     }
     // apply consolidated stats array indexes to the stats
     $("#strValue").append(consolidatedStats[0])
@@ -85,10 +94,12 @@ $("#actionButtonDiv").on("click", "#clearAppliedStats", function() {
     $(".col-4").empty()
     // append the values to the page
     for (let i = 0; i <generatedStats.length; i++) {
-        var statButton = $("<button>");
-        statButton.attr("class", "col-2 statButton");
+        let statDiv = $("<div>");
+        statDiv.attr("class", "col-2")
+        let statButton = $("<button>");
+        statButton.attr("class", "statButton")
         statButton.text(generatedStats[i]);
-        $("#addStatButton").append(statButton);
+        statDiv.append(statButton);
+        $("#addStatButton").append(statDiv);
     }
-})
-// find a way to remove numbers from an array by index, without leaving a "null"
+});

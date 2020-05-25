@@ -9,23 +9,32 @@
     <title>Dungeon Buddy</title>
 </head>
 <body>
-    <header>
-        <!-- bootstrap jumbotron -->
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-              <h1 class="display-4" id="pageTitle">Dungeon Buddy</h1>
-            </div>
-          </div>
-        <!-- bootstrap navbar -->
-        <nav class="nav nav-pills flex-column flex-sm-row">
-            <a class="flex-sm-fill text-sm-center nav-link" href="index.html">Home Page</a>
-            <a class="flex-sm-fill text-sm-center nav-link" href="dice.html">Dice Roll</a>
-            <a class="flex-sm-fill text-sm-center nav-link active" href="abilities.html">Abilities</a>
-            <a class="flex-sm-fill text-sm-center nav-link" href="character.html">Characters</a>
-          </nav>
-    </header>
+  <header>
+    <div class="row nav-bar">
+      <div class="col-3" id="home-link"><a href="index.html"><img src="./assets/Logo.png" alt="dungeon buddy logo"></a></div>
+      <div class="col-3"><a href="dice.html"><p>Dice Roll</p></a></div>
+      <div class="col-3"><a href="abilities.html"><p>Abilities</p></a></div>
+      <div class="col-3"><a href="character.html"><p>Characters</p></a></div>
+    </div>
+  </header>
 
     <article class="container">
+      <section class="row">
+        <div class="col-12"><h1>Ability Scores</h1></div>
+      </section>
+      <section class="row">
+        <div class="col-12" id="stat-instruct"><p>Generate the stats, then click each number to apply them to the abilities. Stats must be clicked in order, so if you make a mistake, just tap the clear button at the bottom!</p></div>
+      </section>
+      <!-- generate stats button -->
+      <section class="row">
+        <div class="col-12" id="actionButtonDiv">
+          <button id="generateStats"><h3>Generate Stats</h3></button>
+        </div>
+      </section>
+      <!-- section to add stat buttons -->
+      <section class="row" id="addStatButton">
+      </section>
+
       <section class="row">
         <div class="col-8 abilitiesCol"><h3>Strength</h3></div>
         <div class="col-4 abilitiesCol" id="strValue"></div>
@@ -50,19 +59,13 @@
         <div class="col-8 abilitiesCol"><h3>Charisma</h3></div>
         <div class="col-4 abilitiesCol" id="chrValue"></div>
       </section>
-      <!-- generate stats button -->
-      <section class="row">
-        <div class="col-12" id="actionButtonDiv">
-          <button type="button" class="btn btn-dark" id="generateStats"><h3>Generate Stats</h3></button>
-        </div>
-      </section>
-      <!-- new section to add buttons from script-->
-      <section class="row" id="addStatButton">
+      <!-- new section for clear button-->
+      <section class="row" id="clearButton">
       </section>
     </article>
 
     <footer>
-      <p>2020 Bryce Speirs <br>Application for Dungeons & Dragons</p>
+      <p>2020 Bryce Speirs - Application for Dungeons & Dragons</p>
     </footer>
 
     <script src="https://code.jquery.com/jquery.js"></script>

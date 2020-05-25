@@ -9,27 +9,42 @@
     <title>Dungeon Buddy</title>
 </head>
 <body>
-    <header>
-        <!-- bootstrap jumbotron -->
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-              <h1 class="display-4" id="pageTitle">Dungeon Buddy</h1>
-            </div>
+  <header>
+    <div class="row nav-bar">
+      <div class="col-3" id="home-link"><a href="index.html"><img src="./assets/Logo.png" alt="dungeon buddy logo"></a></div>
+      <div class="col-3"><a href="dice.html"><p>Dice Roll</p></a></div>
+      <div class="col-3"><a href="abilities.html"><p>Abilities</p></a></div>
+      <div class="col-3"><a href="character.html"><p>Characters</p></a></div>
+    </div>
+  </header>
+    <article>
+      <section class="container">
+        <div class="row">
+          <div class="col-12"><h1>Random character Generator</h1></div>
+        </div>
+      </section>
+
+      <section class="container">
+        <div class="row">
+          <div class="col-12">
+              <button id="randomize"><h3>Generate character</h3></button>
           </div>
-        <!-- bootstrap navbar -->
-        <nav class="nav nav-pills flex-column flex-sm-row">
-            <a class="flex-sm-fill text-sm-center nav-link" href="index.html">Home Page</a>
-            <a class="flex-sm-fill text-sm-center nav-link" href="dice.html">Dice Roll</a>
-            <a class="flex-sm-fill text-sm-center nav-link" href="abilities.html">Abilities</a>
-            <a class="flex-sm-fill text-sm-center nav-link active" href="character.html">Characters</a>
-          </nav>
-    </header>
+        </div>
+      </section>
 
-    <h1 id="comingSoon">Content coming soon!</h1>
-
+      <section class="container">
+        <div class="row" id="hide-box">
+          <div class="col-6" id="raceImg"></div>
+          <div class="col-6" id="charDetails"></div>
+        </div>
+      </section>
+    </article>
 
     <footer>
-      <p>2020 Bryce Speirs <br>Application for Dungeons & Dragons</p>
+      <p>2020 Bryce Speirs - Application for Dungeons & Dragons</p>
     </footer>
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="./assets/character.js"></script>
 </body>
 </html>

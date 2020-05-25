@@ -10,38 +10,29 @@
     <title>Dungeon Buddy</title>
 </head>
 <body>
+  <!-- nav bar -->
     <header>
-        <!-- bootstrap jumbotron -->
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-              <h1 class="display-4" id="pageTitle">Dungeon Buddy</h1>             
-            </div>
-          </div>
-          <!-- backgroun image -->
-        <!-- bootstrap navbar -->
-        <nav class="nav nav-pills flex-column flex-sm-row">
-            <a class="flex-sm-fill text-sm-center nav-link active" href="index.html">Home Page</a>
-            <a class="flex-sm-fill text-sm-center nav-link" href="dice.html">Dice Roll</a>
-            <a class="flex-sm-fill text-sm-center nav-link" href="abilities.html">Abilities</a>
-            <a class="flex-sm-fill text-sm-center nav-link" href="character.html">Characters</a>
-          </nav>
+      <div class="row nav-bar">
+        <div class="col-3" id="home-link"><a href="index.html"><img src="./assets/Logo.png" alt="dungeon buddy logo"></a></div>
+        <div class="col-3"><a href="dice.html"><p>Dice Roll</p></a></div>
+        <div class="col-3"><a href="abilities.html"><p>Abilities</p></a></div>
+        <div class="col-3"><a href="character.html"><p>Characters</p></a></div>
+      </div>
     </header>
 
     <article class="container">
+      <div class="row" id="db-home">
+        <div class="col-12"><img src="./assets/DBHome.png" alt="Dungeon Buddy in a creepy font"></div>
+      </div>
       <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8">
-        <h1 id="homeIntro">Welcome to Dungeon Buddy!</h1>
-        <h3 id="homeSub">Use this app to simulate dice rolls, generate ability stats, or randomly create a character!</h3>
+        <div class="col-12"><h3 id="homeSub">Use this app to simulate dice rolls, generate ability stats, or randomly create a character!</h3></div>
       </div>
-      <div class="col-2"></div>
-      </div>
-
     </article>
 
 
+
     <footer>
-      <p>2020 Bryce Speirs <br>Application for Dungeons & Dragons</p>
+      <p>2020 Bryce Speirs - Application for Dungeons & Dragons</p>
     </footer>
 
     
