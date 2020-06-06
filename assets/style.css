@@ -39,6 +39,9 @@ h1 {
 
 
 /* ---------Dice Roll Page------------- */
+.dice-image {
+    margin: 6px;
+}
 #diceValue {
     width: 90%;
     height: 60px;
