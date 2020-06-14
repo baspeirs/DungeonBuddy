@@ -58,6 +58,14 @@ h1 {
     color: white;
     margin-top: 40px;
 }
+
+#rollValue {
+    text-align: center;
+    font-family: 'Permanent Marker', cursive;
+    color: black;
+    font-size: 72px;
+    margin-top: 20px;
+}
 /*---------------- Stat Generate Page ------------------- */
 .statButton {
     width: 65px;
