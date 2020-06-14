@@ -2,7 +2,7 @@
 ![GitHub license](https://img.shields.io/badge/license-None-blue.svg)
 
 Check out the repo [here](https://baspeirs.github.io/DungeonBuddy/)!
-And the deployed site [here](https://baspeirs.github.io/DungeonBuddy/character.html)!
+And the deployed site [here](https://baspeirs.github.io/DungeonBuddy/index.html)!
  
 This application will help you with your everyday D&D needs. You can simulate dice rolls, randomly generate a character, and you can apply ability scores to your new character!
 
