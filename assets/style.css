@@ -31,7 +31,7 @@ footer {
 }
 h1 {
     text-align: center;
-    font-family: 'Permanent Marker', cursive;
+    font-family: 'Bebas Neue', cursive;
     color: white;
     font-size: 72px;
     margin-top: 20px;
@@ -39,9 +39,27 @@ h1 {
 
 
 /* ---------Dice Roll Page------------- */
+#sub-head-dice {
+    margin-bottom: 45px;
+}
+
 .dice-image {
     margin: 6px;
 }
+
+.dice-type {
+    background-color: white;
+    border-radius: 50%;
+    font-size: 16px;
+    font-weight: bold;
+    padding-top: 10px;
+    margin: 10px;
+}
+
+#dice-4 {
+    width: 20px;
+}
+
 #diceValue {
     width: 90%;
     height: 60px;
