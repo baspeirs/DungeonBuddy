@@ -2,9 +2,7 @@ html {
     height: 100%;
 }
 body {
-    background-image: url("./man-silhouette-in-haunted-forest-K83C75N.jpg");
-    background-repeat: no-repeat, repeat;
-    background-position: center;
+    background: url("./man-silhouette-in-haunted-forest-K83C75N.jpg") no-repeat center center fixed;
     background-size: cover;
     min-height: 100%;
     display: flex;
