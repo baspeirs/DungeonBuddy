@@ -1,74 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/style.css">
-    <title>Dungeon Buddy</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+  <title>Dungeon Buddy</title>
 </head>
+
 <body>
   <header>
     <div class="row nav-bar">
-      <div class="col-3" id="home-link"><a href="index.html"><img src="./assets/Logo.png" alt="dungeon buddy logo"></a></div>
-      <div class="col-3"><a href="dice.html"><p>Dice Roll</p></a></div>
-      <div class="col-3"><a href="abilities.html"><p>Abilities</p></a></div>
-      <div class="col-3"><a href="character.html"><p>Characters</p></a></div>
+      <div class="col-3" id="home-link"><a href="index.html"><img src="./assets/Logo.png" alt="dungeon buddy logo"></a>
+      </div>
+      <div class="col-3"><a href="dice.html">
+          <p>Dice Roll</p>
+        </a></div>
+      <div class="col-3"><a href="abilities.html">
+          <p>Abilities</p>
+        </a></div>
+      <div class="col-3"><a href="character.html">
+          <p>Characters</p>
+        </a></div>
     </div>
   </header>
 
-    <article class="container">
-      <section class="row">
-        <div class="col-12"><h1>Ability Scores</h1></div>
-      </section>
-      <section class="row">
-        <div class="col-12" id="stat-instruct"><p>Generate the stats, then click each number to apply them to the abilities. Stats must be clicked in order, so if you make a mistake, just tap the clear button!</p></div>
-      </section>
-      <!-- generate stats button -->
-      <section class="row">
-        <div class="col-12" id="actionButtonDiv">
-          <button id="generateStats"><h3>Generate Stats</h3></button>
+  <article class="container">
+    <section class="row">
+      <div class="col-12">
+        <h1>Ability Scores</h1>
+      </div>
+    </section>
+    <section class="row">
+      <div class="col-12" id="stat-instruct">
+        <p>Generate the stats, then click each number to apply them to the abilities. Stats must be clicked in order, so
+          if you make a mistake, just tap the clear button!</p>
+      </div>
+    </section>
+    <!-- generate stats button -->
+    <section class="row">
+      <div class="col-12" id="actionButtonDiv">
+        <button id="generateStats">
+          <h3>Generate Stats</h3>
+        </button>
+      </div>
+    </section>
+    <!-- section to add stat buttons -->
+    <section class="row" id="addStatButton">
+    </section>
+
+    <!-- modal -->
+    <section class="modal" id="apply-stat-modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Stat Value:</p>
+        <p id="stat-value"></p>
+        <button class="add-stat-btn" id="strength">Strength</button>
+        <button class="add-stat-btn" id="dexterity">Dexterity</button>
+        <button class="add-stat-btn" id="constitution">Constitution</button>
+        <button class="add-stat-btn" id="intelligence">Intelligence</button>
+        <button class="add-stat-btn" id="wisdom">Wisdom</button>
+        <button class="add-stat-btn" id="charisma">Charisma</button>
+      </div>
+    </section>
+
+    <!-- ablilities section -->
+    <section class="row">
+      <div class="col-5">
+        <div class="row">
+          <h3 class="col-8 abilitiesCol">Strength</h3>
+          <h3 class="col-4 abilitiesCol" id="strValue"></h3>
         </div>
-      </section>
-      <!-- section to add stat buttons -->
-      <section class="row" id="addStatButton">
-      </section>
+      </div>
+      <div class="col-1"></div>
+      <div class="col-5">
+        <div class="row">
+          <h3 class="col-8 abilitiesCol">Dexterity</h3>
+          <h3 class="col-4 abilitiesCol" id="dexValue"></h3>
+        </div>
+      </div>
+    </section>
 
-      <section class="row">
-        <div class="col-8 abilitiesCol"><h3>Strength</h3></div>
-        <div class="col-4 abilitiesCol" id="strValue"></div>
-      </section>
-      <section class="row">
-        <div class="col-8 abilitiesCol"><h3>Dexterity</h3></div>
-        <div class="col-4 abilitiesCol" id="dexValue"></div>
-      </section>
-      <section class="row">
-        <div class="col-8 abilitiesCol"><h3>Constitution</h3></div>
-        <div class="col-4 abilitiesCol" id="conValue"></div>
-      </section>
-      <section class="row">
-        <div class="col-8 abilitiesCol"><h3>Intelligence</h3></div>
-        <div class="col-4 abilitiesCol" id="intValue"></div>
-      </section>
-      <section class="row">
-        <div class="col-8 abilitiesCol"><h3>Wisdom</h3></div>
-        <div class="col-4 abilitiesCol" id="wisValue"></div>
-      </section>
-      <section class="row">
-        <div class="col-8 abilitiesCol"><h3>Charisma</h3></div>
-        <div class="col-4 abilitiesCol" id="chrValue"></div>
-      </section>
-      <!-- new section for clear button-->
-      <section class="row" id="clearButton">
-      </section>
-    </article>
+    <section class="row">
+      <div class="col-5">
+        <div class="row">
+          <h3 class="col-8 abilitiesCol">Constitution</h3>
+          <h3 class="col-4 abilitiesCol" id="conValue"></h3>
+        </div>
+      </div>
+      <div class="col-1"></div>
+      <div class="col-5">
+        <div class="row">
+          <h3 class="col-8 abilitiesCol">Intelligence</h3>
+          <h3 class="col-4 abilitiesCol" id="intValue"></h3>
+        </div>
+      </div>
+    </section>
 
-    <footer>
-      <p>2020 Bryce Speirs - Application for Dungeons & Dragons</p>
-    </footer>
+    <section class="row">
+      <div class="col-5">
+        <div class="row">
+          <h3 class="col-8 abilitiesCol">Wisdom</h3>
+          <h3 class="col-4 abilitiesCol" id="wisValue"></h3>
+        </div>
+      </div>
+      <div class="col-1"></div>
+      <div class="col-5">
+        <div class="row">
+          <h3 class="col-8 abilitiesCol">Charisma</h3>
+          <h3 class="col-4 abilitiesCol" id="chrValue"></h3>
+        </div>
+      </div>
+    </section>
+    
+    <!-- new section for clear button-->
+    <section class="row" id="clearButton">
+    </section>
+  </article>
 
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="assets/abilities.js"></script>
+  <footer>
+    <p>2020 Bryce Speirs - Application for Dungeons & Dragons</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="assets/abilities.js"></script>
 </body>
+
 </html>

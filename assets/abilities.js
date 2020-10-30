@@ -1,9 +1,13 @@
 // create two arrays, one to put the random values in, one to apply values to abilities
 var generatedStats = [];
 var consolidatedStats = [];
+const attributes = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]
 
 // create click event for the button "generate stats"
 $("#generateStats").on("click", function() {
+    console.log("generating stats: ")
+    console.log(generatedStats)
+    console.log(consolidatedStats)
     // change the attribute of the button and the text contents
     $("#generateStats").text("Clear")
     // set attribute of "new" button
@@ -50,41 +54,111 @@ $("#generateStats").on("click", function() {
     }
 })
 
-// create a click event for the generated buttons
-$("#addStatButton").on("click", ".statButton", function() {
-    // clear the field 
-    $("#addStatButton").empty();
-    $(".col-4").empty()
-    // add value of genereated buttons to the end of new array
-    consolidatedStats.push(($(this).text()))
-    // grab the integer values of selected button
-    let integerOfClick = parseInt($(this).text())
-    // find the index of selected button
-    let indexClick = generatedStats.indexOf(integerOfClick);
-    // remove number at that index
-    generatedStats.splice(indexClick, 1);
-    // loop and re-append remaning buttons
-    for (let i = 0; i <generatedStats.length; i++) {
-        let statDiv = $("<div>");
-        statDiv.attr("class", "col-2")
-        let statButton = $("<button>");
-        statButton.attr("class", "statButton")
-        statButton.text(generatedStats[i]);
-        statDiv.append(statButton);
-        $("#addStatButton").append(statDiv);
-    }
-    // apply consolidated stats array indexes to the stats
-    $("#strValue").append(consolidatedStats[0])
-    $("#dexValue").append(consolidatedStats[1])
-    $("#conValue").append(consolidatedStats[2])
-    $("#intValue").append(consolidatedStats[3])
-    $("#wisValue").append(consolidatedStats[4])
-    $("#chrValue").append(consolidatedStats[5])
+// ====== create a click event for the generated buttons =-======
+// $("#addStatButton").on("click", ".statButton", function() {
+//     console.log("adding stats: ")
+//     console.log(generatedStats)
+//     console.log(consolidatedStats)
+//     // clear the field 
+//     $("#addStatButton").empty();
+//     $(".col-4").empty()
+//     // add value of genereated buttons to the end of new array
+//     consolidatedStats.push(($(this).text()))
+//     // grab the integer values of selected button
+//     let integerOfClick = parseInt($(this).text())
+//     // find the index of selected button
+//     let indexClick = generatedStats.indexOf(integerOfClick);
+//     // remove number at that index
+//     generatedStats.splice(indexClick, 1);
+//     // loop and re-append remaning buttons
+//     for (let i = 0; i <generatedStats.length; i++) {
+//         let statDiv = $("<div>");
+//         statDiv.attr("class", "col-2")
+//         let statButton = $("<button>");
+//         statButton.attr("class", "statButton")
+//         statButton.text(generatedStats[i]);
+//         statDiv.append(statButton);
+//         $("#addStatButton").append(statDiv);
+//     }
+//     // apply consolidated stats array indexes to the stats
+//     $("#strValue").append(consolidatedStats[0])
+//     $("#dexValue").append(consolidatedStats[1])
+//     $("#conValue").append(consolidatedStats[2])
+//     $("#intValue").append(consolidatedStats[3])
+//     $("#wisValue").append(consolidatedStats[4])
+//     $("#chrValue").append(consolidatedStats[5])
     
-})
+// });
+
+// Get the modal
+const modal = document.getElementById("apply-stat-modal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("addStatButton");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+$("#addStatButton").on("click", ".statButton", function() {
+    let stat = ($(this).text())
+    modal.style.display = "block";
+    $("#stat-value").text(stat);
+    for(let i = 0; i < generatedStats.length; i++) {
+        if(generatedStats[i] === stat) {
+            consolidatedStats.push(stat);
+            delete generatedStats[i];
+            console.log("consolidated stats");
+            console.log(consolidatedStats);
+            console.log("generated stats");
+            console.log(generatedStats);
+            return;
+        }
+    }
+
+    $("#strength").on("click", () => {
+        console.log("strength")
+        $("#strValue").text(stat);
+    });
+    $("#dexterity").on("click", () => {
+        console.log("dexterity")
+        $("#dexValue").text(stat);
+    });
+    $("#constitution").on("click", () => {
+        console.log("constitution")
+        $("#conValue").text(stat);
+    });
+    $("#intelligence").on("click", () => {
+        console.log("intelligence")
+        $("#intValue").text(stat);
+    });
+    $("#wisdom").on("click", () => {
+        console.log("wisdom")
+        $("#wisValue").text(stat);
+    });
+    $("#charisma").on("click", () => {
+        console.log("charisma")
+        $("#chrValue").text(stat);
+    });
+});
+
 // repace it with a button that adds values back into the generated stats array
 // this prevents people from just generating a new set of stats... Sometimes you can't change your attribues.. thats life, and D&D
 $("#actionButtonDiv").on("click", "#clearAppliedStats", function() {
+    console.log("generating stats: ")
+    console.log(generatedStats)
+    console.log(consolidatedStats)
     // add the items of consolidated array to generated stats array
     generatedStats = generatedStats.concat(consolidatedStats);
     // remove all items from consolidated stats
