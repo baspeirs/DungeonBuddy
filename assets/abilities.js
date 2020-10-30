@@ -32,8 +32,12 @@ $("#generateStats").on("click", function () {
         // push them to the generate stats array 
         generatedStats.push(statValue(tempArray))
     }
-    // loop through array
-    for (let i = 0; i < generatedStats.length; i++) {
+    // generate stat buttons
+    generateStatButtons(generatedStats);
+});
+
+const generateStatButtons = (array) => {
+    for (let i = 0; i < array.length; i++) {
         // create a div each time
         let statDiv = $("<div>")
         // apply attributes
@@ -43,13 +47,13 @@ $("#generateStats").on("click", function () {
         // apply attributes
         statButton.attr("class", "statButton");
         // apply the text
-        statButton.text(generatedStats[i]);
+        statButton.text(array[i]);
         // append the button to the div
         statDiv.append(statButton)
         // append the div to the page
         $("#addStatButton").append(statDiv);
     }
-});
+}
 
 // Get the modal
 const modal = document.getElementById("apply-stat-modal");
@@ -72,38 +76,39 @@ window.onclick = function (event) {
     }
 }
 
-$("#addStatButton").on("click", ".statButton", function () {
-    let stat = ($(this).text())
-    modal.style.display = "block";
-    $("#stat-value").text(stat);
+const reWorkStatArrays = (array, stat) => {
     let tempStatArray = [];
 
-    for (let i = 0; i < generatedStats.length; i++) {
-        // ===============console log ===============
-        console.log("generated stats i first loop")
-        console.log(generatedStats[i])
-        console.log("stat first loop: ")
-        console.log(stat)
-
-        if (generatedStats[i] != stat) {
-            tempStatArray.push(generatedStats[i]);
-
-            // ===============console log ===============
-            console.log("temp stat array first loop generated stat != stat: ")
-            console.log(tempStatArray);
-        } else if (generatedStats[i] == stat) {
+    for (let i = 0; i < array.length; i++) {
+        console.log("generated stats array: ")
+        console.log(array)
+        if (array[i] != stat) {
+            tempStatArray.push(array[i]);
+            console.log("temp stats first condition")
+            console.log(tempStatArray)
+        } 
+        else if (array[i] == stat) {
             consolidatedStats.push(stat);
-            for (let j = i + 1; j < generatedStats.length; j++) {
-                tempStatArray.push(generatedStats[j]);
-
-                // ===============console log ===============
-                console.log("temp stat array second loop generated stats i == stat: ")
+            for (let j = i + 1; j < array.length; j++) {
+                console.log("temp stats second condition")
                 console.log(tempStatArray)
-            }
-            generatedStats = tempStatArray
-            return;
+                console.log("j: " + j)
+                console.log("array lenth: " + array.length)
+                tempStatArray.push(array[j]);
+            };
+            return generateStatButtons(tempStatArray);
         }
-    }
+    };
+}
+
+$("#addStatButton").on("click", ".statButton", function () {
+    $("#addStatButton").empty();
+    let stat = ($(this).text());
+    modal.style.display = "block";
+    $("#stat-value").text(stat);
+
+    reWorkStatArrays(generatedStats, stat);
+
 
     $("#strength").on("click", () => {
         console.log("strength")
