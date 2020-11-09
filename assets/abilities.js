@@ -1,10 +1,109 @@
 // create two arrays, one to put the random values in, one to apply values to abilities
 var generatedStats = [];
 var consolidatedStats = [];
-const attributes = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]
+const attributes = {
+    strength: "test", 
+    dexterity: "test", 
+    constitution: "test", 
+    intelligence : "test", 
+    wisdom: "test", 
+    charisma: "test"
+}
+
+// Get the modal
+const modal = document.getElementById("apply-stat-modal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("addStatButton");
+
+// Get the <span> element that closes the modal
+// var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+$(".modal-header").on("click", ".close", function () {
+    modal.style.display = "none";
+});
+
+$(".modal-body").on("click", ".add-stat-btn", () => {
+    modal.style.display = "none";
+})
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+// ===== function to re-work and consolidate the stats 
+const reWorkStatArrays = (array, stat) => {
+    let tempStatArray = [];
+    console.log("rework stat array working");
+    console.log("generated stats array: ");
+    console.log(array);
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] != stat) {
+            tempStatArray.push(array[i]);
+        } 
+        else if (array[i] == stat) {
+            consolidatedStats.push(stat);
+            for (let j = i + 1; j < array.length; j++) {
+                tempStatArray.push(array[j]);
+            };
+            generatedStats.splice(0, generatedStats.length);
+            generatedStats = tempStatArray;
+            return generateStatButtons(tempStatArray);
+        }
+    };
+}
+
+    // ===== function to generate stats and add buttons on the page for each one =====
+const generateStatButtons = (array) => {
+    console.log("generateing stat buttons")
+    for (let i = 0; i < array.length; i++) {
+        // create a div each time
+        let statDiv = $("<div>")
+        // apply attributes
+        statDiv.attr("class", "col-2")
+        // create a button each time
+        var statButton = $("<button>");
+        // apply attributes
+        statButton.attr("class", "statButton");
+        // apply the text
+        statButton.text(array[i]);
+        // append the button to the div
+        statDiv.append(statButton)
+        // append the div to the page
+        $("#addStatButton").append(statDiv);
+    }
+}
+
+const generateAbilities = () => {
+    console.log("generateing abilities")
+    // create 3 container divs
+    let containerDiv = $("<div>").attr("class", "row"); // for str and dex
+    // create 6 divs, 1 for each ability, each with a col-5 class
+    for (const property in attributes) {
+        let attributeDiv = $("<div>").attr("class", "col-xl-12");
+        let subDiv = $("<div>").attr("class", "row");
+        let attribute = $("<h3>").attr("class", "col-8 abilitiesCol").text(property);
+        let attrValue = $("<h3>").attr("class", "col-4 abilitiesCol").text(attributes[property]);
+        attrValue.attr("id", property + "Val");
+        // append the attribute and the value to the subDiv 
+        subDiv.append(attribute);
+        subDiv.append(attrValue);
+        // append the subdiv to the attribute div
+        attributeDiv.append(subDiv);
+        // append the attribute div to the container div
+        containerDiv.append(attributeDiv);
+    };
+    // append the container div (now visible on page)
+    $("#abilities").append(containerDiv);
+}
 
 // create click event for the button "generate stats"
 $("#generateStats").on("click", function () {
+    console.log("generating stats button clicked")
     // change the attribute of the button and the text contents
     $("#generateStats").text("Clear")
     // set attribute of "new" button
@@ -36,90 +135,48 @@ $("#generateStats").on("click", function () {
     generateStatButtons(generatedStats);
 });
 
-const generateStatButtons = (array) => {
-    for (let i = 0; i < array.length; i++) {
-        // create a div each time
-        let statDiv = $("<div>")
-        // apply attributes
-        statDiv.attr("class", "col-2")
-        // create a button each time
-        var statButton = $("<button>");
-        // apply attributes
-        statButton.attr("class", "statButton");
-        // apply the text
-        statButton.text(array[i]);
-        // append the button to the div
-        statDiv.append(statButton)
-        // append the div to the page
-        $("#addStatButton").append(statDiv);
-    }
-}
-
-// Get the modal
-const modal = document.getElementById("apply-stat-modal");
-
-// Get the button that opens the modal
-var btn = document.getElementById("addStatButton");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-    modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-
-const reWorkStatArrays = (array, stat) => {
-    let tempStatArray = [];
-
-    for (let i = 0; i < array.length; i++) {
-        console.log("generated stats array: ")
-        console.log(array)
-        if (array[i] != stat) {
-            tempStatArray.push(array[i]);
-            console.log("temp stats first condition")
-            console.log(tempStatArray)
-        } 
-        else if (array[i] == stat) {
-            consolidatedStats.push(stat);
-            for (let j = i + 1; j < array.length; j++) {
-                console.log("temp stats second condition")
-                console.log(tempStatArray)
-                console.log("j: " + j)
-                console.log("array lenth: " + array.length)
-                tempStatArray.push(array[j]);
-            };
-            return generateStatButtons(tempStatArray);
-        }
-    };
-}
-
 $("#addStatButton").on("click", ".statButton", function () {
+    console.log("clicked addStatButton")
+    // empty the whole div of stats
     $("#addStatButton").empty();
+    // empty the abilities div 
+    $("#abilities").empty();
+    // set variable for the stat clicked on 
     let stat = ($(this).text());
+    // pull up the modal
     modal.style.display = "block";
+    // show the stat on the page
     $("#stat-value").text(stat);
 
-    reWorkStatArrays(generatedStats, stat);
-
-
     $("#strength").on("click", () => {
-        console.log("strength")
-        $("#strValue").text(stat);
+        console.log("clicked strength");
+        $("#abilities").empty()
+        if($("#strengthVal").text() === "") {
+            attributes.strength = stat;
+            console.log("attributes when value  empty")
+            console.log(attributes)
+            generateAbilities();
+            reWorkStatArrays(generatedStats, stat);
+            console.log("value empty");
+            console.log(generatedStats)
+        } 
+        else {
+            generatedStats.push(attributes.strength);
+            attributes.strength = stat;
+            console.log("attributes when value not empty")
+            console.log(attributes)
+            generateAbilities();
+            reWorkStatArrays(generatedStats, stat);
+            console.log("value not empty");
+            console.log(generatedStats)
+        }
     });
     $("#dexterity").on("click", () => {
         console.log("dexterity")
         $("#dexValue").text(stat);
     });
     $("#constitution").on("click", () => {
-        console.log("constitution")
+        console.log("constitution");
         $("#conValue").text(stat);
     });
     $("#intelligence").on("click", () => {
@@ -159,4 +216,6 @@ $("#actionButtonDiv").on("click", "#clearAppliedStats", function () {
         statDiv.append(statButton);
         $("#addStatButton").append(statDiv);
     }
+
+    generateAbilities();
 });

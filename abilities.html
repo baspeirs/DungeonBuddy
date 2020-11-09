@@ -52,70 +52,100 @@
     <section class="row" id="addStatButton">
     </section>
 
+    <div class="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Modal body text goes here.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- modal -->
-    <section class="modal" id="apply-stat-modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <p>Stat Value:</p>
-        <p id="stat-value"></p>
-        <button class="add-stat-btn" id="strength">Strength</button>
-        <button class="add-stat-btn" id="dexterity">Dexterity</button>
-        <button class="add-stat-btn" id="constitution">Constitution</button>
-        <button class="add-stat-btn" id="intelligence">Intelligence</button>
-        <button class="add-stat-btn" id="wisdom">Wisdom</button>
-        <button class="add-stat-btn" id="charisma">Charisma</button>
+    <section class="modal" id="apply-stat-modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <p>Stat Value: </p>
+            <p id="stat-value"></p>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <button class="add-stat-btn btn btn-dark" id="strength" data-dismiss="modal" aria-label="Close">Strength</button>
+            <button class="add-stat-btn btn btn-dark" id="dexterity" data-dismiss="modal" aria-label="Close">Dexterity</button>
+            <button class="add-stat-btn btn btn-dark" id="constitution" data-dismiss="modal" aria-label="Close">Constitution</button>
+            <button class="add-stat-btn btn btn-dark" id="intelligence" data-dismiss="modal" aria-label="Close">Intelligence</button>
+            <button class="add-stat-btn btn btn-dark" id="wisdom" data-dismiss="modal" aria-label="Close">Wisdom</button>
+            <button class="add-stat-btn btn btn-dark" id="charisma" data-dismiss="modal" aria-label="Close">Charisma</button>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ablilities section -->
-    <section class="row">
-      <div class="col-5">
-        <div class="row">
-          <h3 class="col-8 abilitiesCol">Strength</h3>
-          <h3 class="col-4 abilitiesCol" id="strValue"></h3>
+    <section id="abilities">
+      <div class="row">
+        <div class="col-5">
+          <div class="row">
+            <h3 class="col-8 abilitiesCol">Strength</h3>
+            <h3 class="col-4 abilitiesCol" id="strValue"></h3>
+          </div>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-5">
+          <div class="row">
+            <h3 class="col-8 abilitiesCol">Dexterity</h3>
+            <h3 class="col-4 abilitiesCol" id="dexValue"></h3>
+          </div>
         </div>
       </div>
-      <div class="col-1"></div>
-      <div class="col-5">
-        <div class="row">
-          <h3 class="col-8 abilitiesCol">Dexterity</h3>
-          <h3 class="col-4 abilitiesCol" id="dexValue"></h3>
+
+      <div class="row">
+        <div class="col-5">
+          <div class="row">
+            <h3 class="col-8 abilitiesCol">Constitution</h3>
+            <h3 class="col-4 abilitiesCol" id="conValue"></h3>
+          </div>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-5">
+          <div class="row">
+            <h3 class="col-8 abilitiesCol">Intelligence</h3>
+            <h3 class="col-4 abilitiesCol" id="intValue"></h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-5">
+          <div class="row">
+            <h3 class="col-8 abilitiesCol">Wisdom</h3>
+            <h3 class="col-4 abilitiesCol" id="wisValue"></h3>
+          </div>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-5">
+          <div class="row">
+            <h3 class="col-8 abilitiesCol">Charisma</h3>
+            <h3 class="col-4 abilitiesCol" id="chrValue"></h3>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="row">
-      <div class="col-5">
-        <div class="row">
-          <h3 class="col-8 abilitiesCol">Constitution</h3>
-          <h3 class="col-4 abilitiesCol" id="conValue"></h3>
-        </div>
-      </div>
-      <div class="col-1"></div>
-      <div class="col-5">
-        <div class="row">
-          <h3 class="col-8 abilitiesCol">Intelligence</h3>
-          <h3 class="col-4 abilitiesCol" id="intValue"></h3>
-        </div>
-      </div>
-    </section>
-
-    <section class="row">
-      <div class="col-5">
-        <div class="row">
-          <h3 class="col-8 abilitiesCol">Wisdom</h3>
-          <h3 class="col-4 abilitiesCol" id="wisValue"></h3>
-        </div>
-      </div>
-      <div class="col-1"></div>
-      <div class="col-5">
-        <div class="row">
-          <h3 class="col-8 abilitiesCol">Charisma</h3>
-          <h3 class="col-4 abilitiesCol" id="chrValue"></h3>
-        </div>
-      </div>
-    </section>
-    
     <!-- new section for clear button-->
     <section class="row" id="clearButton">
     </section>
