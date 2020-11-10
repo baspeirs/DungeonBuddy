@@ -1,84 +1,38 @@
 // create two arrays, one to put the random values in, one to apply values to abilities
-var generatedStats = [];
-var consolidatedStats = [];
+let generatedStats = [];
+let consolidatedStats = [];
 const attributes = {
-    strength: "test", 
-    dexterity: "test", 
-    constitution: "test", 
-    intelligence : "test", 
-    wisdom: "test", 
-    charisma: "test"
+    strength: "",
+    dexterity: "",
+    constitution: "",
+    intelligence: "",
+    wisdom: "",
+    charisma: ""
 }
 
-// Get the modal
+// ===== Get the modal =====
 const modal = document.getElementById("apply-stat-modal");
-
 // Get the button that opens the modal
 var btn = document.getElementById("addStatButton");
-
 // Get the <span> element that closes the modal
 // var span = document.getElementsByClassName("close")[0];
-
 // When the user clicks on <span> (x), close the modal
 $(".modal-header").on("click", ".close", function () {
     modal.style.display = "none";
 });
-
 $(".modal-body").on("click", ".add-stat-btn", () => {
     modal.style.display = "none";
-})
-
+});
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
-}
+};
 
-// ===== function to re-work and consolidate the stats 
-const reWorkStatArrays = (array, stat) => {
-    let tempStatArray = [];
-    console.log("rework stat array working");
-    console.log("generated stats array: ");
-    console.log(array);
-    for (let i = 0; i < array.length; i++) {
-        if (array[i] != stat) {
-            tempStatArray.push(array[i]);
-        } 
-        else if (array[i] == stat) {
-            consolidatedStats.push(stat);
-            for (let j = i + 1; j < array.length; j++) {
-                tempStatArray.push(array[j]);
-            };
-            generatedStats.splice(0, generatedStats.length);
-            generatedStats = tempStatArray;
-            return generateStatButtons(tempStatArray);
-        }
-    };
-}
-
-    // ===== function to generate stats and add buttons on the page for each one =====
-const generateStatButtons = (array) => {
-    console.log("generateing stat buttons")
-    for (let i = 0; i < array.length; i++) {
-        // create a div each time
-        let statDiv = $("<div>")
-        // apply attributes
-        statDiv.attr("class", "col-2")
-        // create a button each time
-        var statButton = $("<button>");
-        // apply attributes
-        statButton.attr("class", "statButton");
-        // apply the text
-        statButton.text(array[i]);
-        // append the button to the div
-        statDiv.append(statButton)
-        // append the div to the page
-        $("#addStatButton").append(statDiv);
-    }
-}
-
+// ===== function to take the values out of the attributes object and apply them on the page
 const generateAbilities = () => {
+    $("#abilities").empty();
     console.log("generateing abilities")
     // create 3 container divs
     let containerDiv = $("<div>").attr("class", "row"); // for str and dex
@@ -99,9 +53,30 @@ const generateAbilities = () => {
     };
     // append the container div (now visible on page)
     $("#abilities").append(containerDiv);
-}
+};
 
-// create click event for the button "generate stats"
+// ===== function to take an array and generate stats and add buttons on the page for each element =====
+const generateStatButtons = (array) => {
+    console.log("generateing stat buttons")
+    for (let i = 0; i < array.length; i++) {
+        // create a div each time
+        let statDiv = $("<div>")
+        // apply attributes
+        statDiv.attr("class", "col-2")
+        // create a button each time
+        var statButton = $("<button>");
+        // apply attributes
+        statButton.attr("class", "statButton");
+        // apply the text
+        statButton.text(array[i]);
+        // append the button to the div
+        statDiv.append(statButton)
+        // append the div to the page
+        $("#addStatButton").append(statDiv);
+    }
+};
+
+// ===== create click event for the button "generate stats" =====
 $("#generateStats").on("click", function () {
     console.log("generating stats button clicked")
     // change the attribute of the button and the text contents
@@ -135,8 +110,50 @@ $("#generateStats").on("click", function () {
     generateStatButtons(generatedStats);
 });
 
+// ===== function to re-work and consolidate the stats 
+const consolidateStats = (value) => {
+    console.log("consolidating Stats")
+    // create a temperary array
+    let equalArray = [];
+    let tempGeneratedArray = [];
+    let tempConsolidatedArray = [];
+    // loop through generated stats to find the first occurance of value
+    for (let i = 0; i < generatedStats.length; i++) {
+        // any values that are not equal to the selected stat are pushed to one array
+        if (value != generatedStats[i]) tempGeneratedArray.push(generatedStats[i])
+        else if (value == generatedStats[i]) equalArray.push(generatedStats[i])
+    };
+    console.log("results from first loop")
+    console.log("equal array")
+    console.log(equalArray)
+    console.log("temp generated array")
+    console.log(tempGeneratedArray)
+    console.log("temp consolidated array")
+    console.log(tempConsolidatedArray)
+    // loop through the equal array and put one of the elements in consolidated array and the rest in generated array
+    // ======= this is causing an infinite loop ====
+    for (let j = 0; j < equalArray.length; j++) {
+        console.log(j)
+        if (j === 0) tempConsolidatedArray.push(equalArray[j])
+        else tempGeneratedArray.push(equalArray[j])
+        
+    };
+    console.log("results from second loop")
+    console.log("equal array")
+    console.log(equalArray)
+    console.log("temp generated array")
+    console.log(tempGeneratedArray)
+    console.log("temp consolidated array")
+    console.log(tempConsolidatedArray)
+
+    generatedStats = tempGeneratedArray;
+    consolidatedStats.push(tempConsolidatedArray[0]);
+}
+
 $("#addStatButton").on("click", ".statButton", function () {
     console.log("clicked addStatButton")
+    console.log(generatedStats);
+    console.log(consolidatedStats);
     // empty the whole div of stats
     $("#addStatButton").empty();
     // empty the abilities div 
@@ -149,35 +166,53 @@ $("#addStatButton").on("click", ".statButton", function () {
     $("#stat-value").text(stat);
 
     $("#strength").on("click", () => {
-        console.log("clicked strength");
-        $("#abilities").empty()
-        if($("#strengthVal").text() === "") {
+        if ($("#strengthVal").text() === "") {
             attributes.strength = stat;
-            console.log("attributes when value  empty")
-            console.log(attributes)
+            consolidateStats(stat);
+            generateStatButtons(generatedStats);
             generateAbilities();
-            reWorkStatArrays(generatedStats, stat);
-            console.log("value empty");
-            console.log(generatedStats)
-        } 
-        else {
-            generatedStats.push(attributes.strength);
-            attributes.strength = stat;
-            console.log("attributes when value not empty")
-            console.log(attributes)
-            generateAbilities();
-            reWorkStatArrays(generatedStats, stat);
-            console.log("value not empty");
-            console.log(generatedStats)
         }
+        else {
+            $("#addStatButton").empty();
+            generatedStats.push($("#strengthVal").text());
+            attributes.strength = stat;
+            consolidateStats(stat);
+            generateStatButtons(generatedStats);
+            generateAbilities();
+        }
+
     });
     $("#dexterity").on("click", () => {
-        console.log("dexterity")
-        $("#dexValue").text(stat);
+        if ($("#dexterityVal").text() === "") {
+            attributes.dexterity = stat;
+            consolidateStats(stat);
+            generateStatButtons(generatedStats);
+            generateAbilities();
+        }
+        else {
+            $("#addStatButton").empty();
+            generatedStats.push($("#dexterityVal").text());
+            attributes.dexterity = stat;
+            consolidateStats(stat);
+            generateStatButtons(generatedStats);
+            generateAbilities();
+        }
     });
     $("#constitution").on("click", () => {
-        console.log("constitution");
-        $("#conValue").text(stat);
+        if ($("#constitutionVal").text() === "") {
+            attributes.constitution = stat;
+            consolidateStats(stat);
+            generateStatButtons(generatedStats);
+            generateAbilities();
+        }
+        else {
+            $("#addStatButton").empty();
+            generatedStats.push($("#constitutionVal").text());
+            attributes.constitution = stat;
+            consolidateStats(stat);
+            generateStatButtons(generatedStats);
+            generateAbilities();
+        }
     });
     $("#intelligence").on("click", () => {
         console.log("intelligence")
@@ -196,9 +231,6 @@ $("#addStatButton").on("click", ".statButton", function () {
 // repace it with a button that adds values back into the generated stats array
 // this prevents people from just generating a new set of stats... Sometimes you can't change your attribues.. thats life, and D&D
 $("#actionButtonDiv").on("click", "#clearAppliedStats", function () {
-    console.log("generating stats: ")
-    console.log(generatedStats)
-    console.log(consolidatedStats)
     // add the items of consolidated array to generated stats array
     generatedStats = generatedStats.concat(consolidatedStats);
     // remove all items from consolidated stats
@@ -206,16 +238,16 @@ $("#actionButtonDiv").on("click", "#clearAppliedStats", function () {
     // clear the field
     $("#addStatButton").empty();
     $(".col-4").empty()
-    // append the values to the page
-    for (let i = 0; i < generatedStats.length; i++) {
-        let statDiv = $("<div>");
-        statDiv.attr("class", "col-2")
-        let statButton = $("<button>");
-        statButton.attr("class", "statButton")
-        statButton.text(generatedStats[i]);
-        statDiv.append(statButton);
-        $("#addStatButton").append(statDiv);
-    }
+    attributes.strength = "";
+    attributes.dexterity = "";
+    attributes.constitution = "";
+    attributes.intelligence = "";
+    attributes.wisdom = "";
+    attributes.charisma = "";
 
+    // append the values to the page
+    generateStatButtons(generatedStats);
     generateAbilities();
 });
+
+generateAbilities();
