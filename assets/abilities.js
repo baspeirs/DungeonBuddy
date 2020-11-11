@@ -118,11 +118,9 @@ const consolidateStats = (value) => {
         else if (value == generatedStats[i]) equalArray.push(generatedStats[i])
     };
     // loop through the equal array and put one of the elements in consolidated array and the rest in generated array
-    // ======= this is causing an infinite loop ====
     for (let j = 0; j < equalArray.length; j++) {
         if (j === 0) tempConsolidatedArray.push(equalArray[j])
         else tempGeneratedArray.push(equalArray[j])
-
     };
 
     generatedStats = tempGeneratedArray;
@@ -154,7 +152,6 @@ $("#abilities").on("click", "#strength", () => {
         generateStatButtons(generatedStats);
         generateAbilities();
     }
-
 });
 
 $("#abilities").on("click", "#dexterity", () => {
@@ -173,7 +170,78 @@ $("#abilities").on("click", "#dexterity", () => {
         generateStatButtons(generatedStats);
         generateAbilities();
     }
+});
 
+$("#abilities").on("click", "#constitution", () => {
+    if ($("#constitutionVal").text() === "") {
+        $("#addStatButton").empty();
+        attributes.constitution = stat;
+        consolidateStats(stat);
+        generateStatButtons(generatedStats);
+        generateAbilities();
+    }
+    else {
+        $("#addStatButton").empty();
+        generatedStats.push($("#constitutionVal").text());
+        attributes.constitution = stat;
+        consolidateStats(stat);
+        generateStatButtons(generatedStats);
+        generateAbilities();
+    }
+});
+
+$("#abilities").on("click", "#intelligence", () => {
+    if ($("#intelligenceVal").text() === "") {
+        $("#addStatButton").empty();
+        attributes.intelligence = stat;
+        consolidateStats(stat);
+        generateStatButtons(generatedStats);
+        generateAbilities();
+    }
+    else {
+        $("#addStatButton").empty();
+        generatedStats.push($("#intelligenceVal").text());
+        attributes.intelligence = stat;
+        consolidateStats(stat);
+        generateStatButtons(generatedStats);
+        generateAbilities();
+    }
+});
+
+$("#abilities").on("click", "#wisdom", () => {
+    if ($("#wisdomVal").text() === "") {
+        $("#addStatButton").empty();
+        attributes.wisdom = stat;
+        consolidateStats(stat);
+        generateStatButtons(generatedStats);
+        generateAbilities();
+    }
+    else {
+        $("#addStatButton").empty();
+        generatedStats.push($("#wisdomVal").text());
+        attributes.wisdom = stat;
+        consolidateStats(stat);
+        generateStatButtons(generatedStats);
+        generateAbilities();
+    }
+});
+
+$("#abilities").on("click", "#charisma", () => {
+    if ($("#charismaVal").text() === "") {
+        $("#addStatButton").empty();
+        attributes.charisma = stat;
+        consolidateStats(stat);
+        generateStatButtons(generatedStats);
+        generateAbilities();
+    }
+    else {
+        $("#addStatButton").empty();
+        generatedStats.push($("#charismaVal").text());
+        attributes.charisma = stat;
+        consolidateStats(stat);
+        generateStatButtons(generatedStats);
+        generateAbilities();
+    }
 });
 
 // repace it with a button that adds values back into the generated stats array
