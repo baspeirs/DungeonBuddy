@@ -152,6 +152,7 @@ $("#abilities").on("click", "#strength", () => {
         generateStatButtons(generatedStats);
         generateAbilities();
     }
+    stat = ""
 });
 
 $("#abilities").on("click", "#dexterity", () => {
@@ -170,6 +171,7 @@ $("#abilities").on("click", "#dexterity", () => {
         generateStatButtons(generatedStats);
         generateAbilities();
     }
+    stat = ""
 });
 
 $("#abilities").on("click", "#constitution", () => {
@@ -188,6 +190,7 @@ $("#abilities").on("click", "#constitution", () => {
         generateStatButtons(generatedStats);
         generateAbilities();
     }
+    stat = ""
 });
 
 $("#abilities").on("click", "#intelligence", () => {
@@ -206,6 +209,7 @@ $("#abilities").on("click", "#intelligence", () => {
         generateStatButtons(generatedStats);
         generateAbilities();
     }
+    stat = ""
 });
 
 $("#abilities").on("click", "#wisdom", () => {
@@ -224,6 +228,7 @@ $("#abilities").on("click", "#wisdom", () => {
         generateStatButtons(generatedStats);
         generateAbilities();
     }
+    stat = ""
 });
 
 $("#abilities").on("click", "#charisma", () => {
@@ -242,6 +247,7 @@ $("#abilities").on("click", "#charisma", () => {
         generateStatButtons(generatedStats);
         generateAbilities();
     }
+    stat = ""
 });
 
 // repace it with a button that adds values back into the generated stats array
