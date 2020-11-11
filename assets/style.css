@@ -94,6 +94,12 @@ h1 {
     margin-top: 20px;
 }
 /*---------------- Stat Generate Page ------------------- */
+
+.active {
+    background-color: lawngreen;
+    font-size: 30px;
+}
+
 .statButton {
     width: 65px;
     height: 60px;

@@ -1,6 +1,7 @@
 // create two arrays, one to put the random values in, one to apply values to abilities
 let generatedStats = [];
 let consolidatedStats = [];
+let origionalStats = [];
 const attributes = {
     strength: "",
     dexterity: "",
@@ -8,32 +9,11 @@ const attributes = {
     intelligence: "",
     wisdom: "",
     charisma: ""
-}
-
-// ===== Get the modal =====
-const modal = document.getElementById("apply-stat-modal");
-// Get the button that opens the modal
-var btn = document.getElementById("addStatButton");
-// Get the <span> element that closes the modal
-// var span = document.getElementsByClassName("close")[0];
-// When the user clicks on <span> (x), close the modal
-$(".modal-header").on("click", ".close", function () {
-    modal.style.display = "none";
-});
-$(".modal-body").on("click", ".add-stat-btn", () => {
-    modal.style.display = "none";
-});
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
 };
 
 // ===== function to take the values out of the attributes object and apply them on the page
 const generateAbilities = () => {
     $("#abilities").empty();
-    console.log("generateing abilities")
     // create 3 container divs
     let containerDiv = $("<div>").attr("class", "row"); // for str and dex
     // create 6 divs, 1 for each ability, each with a col-5 class
@@ -41,6 +21,7 @@ const generateAbilities = () => {
         let attributeDiv = $("<div>").attr("class", "col-xl-12");
         let subDiv = $("<div>").attr("class", "row");
         let attribute = $("<h3>").attr("class", "col-8 abilitiesCol").text(property);
+        attribute.attr("id", property);
         let attrValue = $("<h3>").attr("class", "col-4 abilitiesCol").text(attributes[property]);
         attrValue.attr("id", property + "Val");
         // append the attribute and the value to the subDiv 
@@ -57,7 +38,6 @@ const generateAbilities = () => {
 
 // ===== function to take an array and generate stats and add buttons on the page for each element =====
 const generateStatButtons = (array) => {
-    console.log("generateing stat buttons")
     for (let i = 0; i < array.length; i++) {
         // create a div each time
         let statDiv = $("<div>")
@@ -76,9 +56,24 @@ const generateStatButtons = (array) => {
     }
 };
 
+const generateActiveStat = (value) => {
+    let statDiv = $("<div>")
+    // apply attributes
+    statDiv.attr("class", "col-2")
+    // create a button each time
+    var statButton = $("<button>");
+    // apply attributes
+    statButton.attr("class", "statButton active");
+    // apply the text
+    statButton.text(value);
+    // append the button to the div
+    statDiv.append(statButton)
+    // append the div to the page
+    $("#addStatButton").append(statDiv);
+}
+
 // ===== create click event for the button "generate stats" =====
 $("#generateStats").on("click", function () {
-    console.log("generating stats button clicked")
     // change the attribute of the button and the text contents
     $("#generateStats").text("Clear")
     // set attribute of "new" button
@@ -112,7 +107,6 @@ $("#generateStats").on("click", function () {
 
 // ===== function to re-work and consolidate the stats 
 const consolidateStats = (value) => {
-    console.log("consolidating Stats")
     // create a temperary array
     let equalArray = [];
     let tempGeneratedArray = [];
@@ -123,109 +117,63 @@ const consolidateStats = (value) => {
         if (value != generatedStats[i]) tempGeneratedArray.push(generatedStats[i])
         else if (value == generatedStats[i]) equalArray.push(generatedStats[i])
     };
-    console.log("results from first loop")
-    console.log("equal array")
-    console.log(equalArray)
-    console.log("temp generated array")
-    console.log(tempGeneratedArray)
-    console.log("temp consolidated array")
-    console.log(tempConsolidatedArray)
     // loop through the equal array and put one of the elements in consolidated array and the rest in generated array
     // ======= this is causing an infinite loop ====
     for (let j = 0; j < equalArray.length; j++) {
-        console.log(j)
         if (j === 0) tempConsolidatedArray.push(equalArray[j])
         else tempGeneratedArray.push(equalArray[j])
-        
+
     };
-    console.log("results from second loop")
-    console.log("equal array")
-    console.log(equalArray)
-    console.log("temp generated array")
-    console.log(tempGeneratedArray)
-    console.log("temp consolidated array")
-    console.log(tempConsolidatedArray)
 
     generatedStats = tempGeneratedArray;
-    consolidatedStats.push(tempConsolidatedArray[0]);
-}
+};
+
+let stat = "";
 
 $("#addStatButton").on("click", ".statButton", function () {
-    console.log("clicked addStatButton")
-    console.log(generatedStats);
-    console.log(consolidatedStats);
-    // empty the whole div of stats
-    $("#addStatButton").empty();
-    // empty the abilities div 
-    $("#abilities").empty();
     // set variable for the stat clicked on 
-    let stat = ($(this).text());
-    // pull up the modal
-    modal.style.display = "block";
-    // show the stat on the page
-    $("#stat-value").text(stat);
+    stat = ($(this).text());
+    // now push the value to the consolidated stats array, and display it. 
+    $("#addStatButton").empty();
+    generateActiveStat(stat)
+});
 
-    $("#strength").on("click", () => {
-        if ($("#strengthVal").text() === "") {
-            attributes.strength = stat;
-            consolidateStats(stat);
-            generateStatButtons(generatedStats);
-            generateAbilities();
-        }
-        else {
-            $("#addStatButton").empty();
-            generatedStats.push($("#strengthVal").text());
-            attributes.strength = stat;
-            consolidateStats(stat);
-            generateStatButtons(generatedStats);
-            generateAbilities();
-        }
+$("#abilities").on("click", "#strength", () => {
+    if ($("#strengthVal").text() === "") {
+        $("#addStatButton").empty();
+        attributes.strength = stat;
+        consolidateStats(stat);
+        generateStatButtons(generatedStats);
+        generateAbilities();
+    }
+    else {
+        $("#addStatButton").empty();
+        generatedStats.push($("#strengthVal").text());
+        attributes.strength = stat;
+        consolidateStats(stat);
+        generateStatButtons(generatedStats);
+        generateAbilities();
+    }
 
-    });
-    $("#dexterity").on("click", () => {
-        if ($("#dexterityVal").text() === "") {
-            attributes.dexterity = stat;
-            consolidateStats(stat);
-            generateStatButtons(generatedStats);
-            generateAbilities();
-        }
-        else {
-            $("#addStatButton").empty();
-            generatedStats.push($("#dexterityVal").text());
-            attributes.dexterity = stat;
-            consolidateStats(stat);
-            generateStatButtons(generatedStats);
-            generateAbilities();
-        }
-    });
-    $("#constitution").on("click", () => {
-        if ($("#constitutionVal").text() === "") {
-            attributes.constitution = stat;
-            consolidateStats(stat);
-            generateStatButtons(generatedStats);
-            generateAbilities();
-        }
-        else {
-            $("#addStatButton").empty();
-            generatedStats.push($("#constitutionVal").text());
-            attributes.constitution = stat;
-            consolidateStats(stat);
-            generateStatButtons(generatedStats);
-            generateAbilities();
-        }
-    });
-    $("#intelligence").on("click", () => {
-        console.log("intelligence")
-        $("#intValue").text(stat);
-    });
-    $("#wisdom").on("click", () => {
-        console.log("wisdom")
-        $("#wisValue").text(stat);
-    });
-    $("#charisma").on("click", () => {
-        console.log("charisma")
-        $("#chrValue").text(stat);
-    });
+});
+
+$("#abilities").on("click", "#dexterity", () => {
+    if ($("#dexterityVal").text() === "") {
+        $("#addStatButton").empty();
+        attributes.dexterity = stat;
+        consolidateStats(stat);
+        generateStatButtons(generatedStats);
+        generateAbilities();
+    }
+    else {
+        $("#addStatButton").empty();
+        generatedStats.push($("#dexterityVal").text());
+        attributes.dexterity = stat;
+        consolidateStats(stat);
+        generateStatButtons(generatedStats);
+        generateAbilities();
+    }
+
 });
 
 // repace it with a button that adds values back into the generated stats array
