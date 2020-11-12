@@ -15,6 +15,32 @@ function raceSelecter() {
     let raceElement = $("<p>").append(race)
     raceElement.attr("id", "race-name")
     $("#charDetails").append(raceElement)
+
+    let imagePath = ""
+    if (race == "Dwarf") {
+        imagePath = "./assets/Dwarf";
+    }else if (race == "Elf") {
+        imagePath = "./assets/Elf";
+    }else if (race == "Halfling") {
+        imagePath = "./assets/Halfling";
+    }else if (race == "Human") {
+        imagePath = "./assets/Human";
+    }else if (race == "Dragonborn") {
+        imagePath = "./assets/Dragonborn";
+    }else if (race == "Gnome") {
+        imagePath = "./assets/Gnome";
+    }else if (race == "Half-Elf") {
+        imagePath = "./assets/Half-Elf";
+    }else if (race == "Half-Orc") {
+        imagePath = "./assets/Half-Orc";
+    }else if (race == "Tiefling") {
+        imagePath = "./assets/Tiefling";
+    }
+    
+    let imageDiv = $("<img>").attr("src", imagePath + ".png")
+    imageDiv.attr("alt", race + " line art")
+    imageDiv.attr("id", "raceImage")
+    $("#raceImg").append(imageDiv)
 }
 
 function classSelecter() {
@@ -46,6 +72,7 @@ function alignmentSelector() {
 
 $("#randomize").on("click", () => {
     $("#charDetails").empty();
+    $("#raceImg").empty();
     raceSelecter();
     genderSelecter();
     classSelecter();

@@ -175,3 +175,7 @@ h1 {
     margin: 20px;
     padding: 10px;
 }
+
+#raceImage {
+    max-height: 350px;
+}

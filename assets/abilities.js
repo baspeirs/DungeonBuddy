@@ -1,6 +1,6 @@
 // create two arrays, one to put the random values in, one to apply values to abilities
 let generatedStats = [];
-let consolidatedStats = [];
+let origionalStatArr = [];
 let origionalStats = [];
 const attributes = {
     strength: "",
@@ -80,7 +80,7 @@ $("#generateStats").on("click", function () {
     $("#generateStats").attr("id", "clearAppliedStats");
     // prevent new stats from being generated (NO CHEATING)
     if (generatedStats.length > 0) return;
-    if (consolidatedStats.length > 0) return;
+    if (origionalStatArr.length > 0) return;
 
     // lets loop 6 times
     for (let i = 0; i < 6; i++) {
@@ -101,6 +101,7 @@ $("#generateStats").on("click", function () {
         // push them to the generate stats array 
         generatedStats.push(statValue(tempArray))
     }
+
     // generate stat buttons
     generateStatButtons(generatedStats);
 });
@@ -254,12 +255,10 @@ $("#abilities").on("click", "#charisma", () => {
 // this prevents people from just generating a new set of stats... Sometimes you can't change your attribues.. thats life, and D&D
 $("#actionButtonDiv").on("click", "#clearAppliedStats", function () {
     // add the items of consolidated array to generated stats array
-    generatedStats = generatedStats.concat(consolidatedStats);
-    // remove all items from consolidated stats
-    consolidatedStats.splice(0);
+    generatedStats = origionalStatArr;
     // clear the field
     $("#addStatButton").empty();
-    $(".col-4").empty()
+    // $(".col-4").empty()
     attributes.strength = "";
     attributes.dexterity = "";
     attributes.constitution = "";
@@ -268,8 +267,9 @@ $("#actionButtonDiv").on("click", "#clearAppliedStats", function () {
     attributes.charisma = "";
 
     // append the values to the page
-    generateStatButtons(generatedStats);
     generateAbilities();
+    generateStatButtons(origionalStatArr);
+    
 });
 
 generateAbilities();
