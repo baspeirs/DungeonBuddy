@@ -96,8 +96,15 @@ h1 {
 /*---------------- Stat Generate Page ------------------- */
 
 .active {
-    background-color: lawngreen;
-    font-size: 30px;
+    background-color: white;
+    width: 107px;
+    height: 100px;
+    padding: 10px;
+    font-size: 40px;
+    margin-top: 20px;
+    border-radius: 50%;
+    border: none;
+    font-weight: bold;
 }
 
 .statButton {
@@ -113,14 +120,40 @@ h1 {
     font-size: 26px;
     font-weight: bold;
     background-color: rgb(220, 231, 241);
-    border-bottom: solid black;
     margin-top: 20px;
     opacity: 75%;
+    /* padding-top: 20px; */
+    border: none;
 }
+
+.abilities {
+    text-align: left;
+    
+}
+
+.attributeButton {
+    border: none;
+    font-weight: bold;
+    background-color: rgb(220, 231, 241);
+    padding: 10px;
+    /* border-radius: 50px; */
+}
+
+.attributeButton:hover {
+    color: #eb1c24; 
+}
+
+.values {
+    padding: 10px;
+}
+
 #stat-instruct {
     color: white
 }
 
+.statValue {
+    padding: 10px;
+}
 
 #rollValueDiv {
     background-color: white;

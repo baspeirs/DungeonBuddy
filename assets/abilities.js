@@ -18,11 +18,15 @@ const generateAbilities = () => {
     let containerDiv = $("<div>").attr("class", "row"); // for str and dex
     // create 6 divs, 1 for each ability, each with a col-5 class
     for (const property in attributes) {
-        let attributeDiv = $("<div>").attr("class", "col-xl-12");
+        let attributeDiv = $("<div>").attr("class", "col-xl-6");
         let subDiv = $("<div>").attr("class", "row");
-        let attribute = $("<h3>").attr("class", "col-8 abilitiesCol").text(property);
+        let attribute = $("<h3>").attr("class", "col-5 abilitiesCol abilities");
+
+        let attributeButton = $("<button>").attr("class", "attributeButton").text(property);
+        attribute.append(attributeButton)
+
         attribute.attr("id", property);
-        let attrValue = $("<h3>").attr("class", "col-4 abilitiesCol").text(attributes[property]);
+        let attrValue = $("<h3>").attr("class", "col-5 abilitiesCol values").text(attributes[property]);
         attrValue.attr("id", property + "Val");
         // append the attribute and the value to the subDiv 
         subDiv.append(attribute);
@@ -59,11 +63,11 @@ const generateStatButtons = (array) => {
 const generateActiveStat = (value) => {
     let statDiv = $("<div>")
     // apply attributes
-    statDiv.attr("class", "col-2")
+    statDiv.attr("class", "col-12")
     // create a button each time
     var statButton = $("<button>");
     // apply attributes
-    statButton.attr("class", "statButton active");
+    statButton.attr("class", "active");
     // apply the text
     statButton.text(value);
     // append the button to the div
