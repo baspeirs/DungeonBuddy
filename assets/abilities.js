@@ -12,8 +12,10 @@ const attributes = {
 };
 
 // ===== function to take the values out of the attributes object and apply them on the page
+// Need to empty everything out of the abilities container to refil the section with new content. 
 const generateAbilities = () => {
     $("#abilities").empty();
+    console.log(attributes);
     // create 3 container divs
     let containerDiv = $("<div>").attr("class", "row"); // for str and dex
     // create 6 divs, 1 for each ability, each with a col-5 class
@@ -42,6 +44,8 @@ const generateAbilities = () => {
 
 // ===== function to take an array and generate stats and add buttons on the page for each element =====
 const generateStatButtons = (array) => {
+    console.log("generateStatButtons Function");
+    console.log(array);
     for (let i = 0; i < array.length; i++) {
         // create a div each time
         let statDiv = $("<div>")
@@ -61,6 +65,8 @@ const generateStatButtons = (array) => {
 };
 
 const generateActiveStat = (value) => {
+    console.log("generateActiveStat function Value");
+    console.log(value);
     let statDiv = $("<div>")
     // apply attributes
     statDiv.attr("class", "col-12")
@@ -78,6 +84,12 @@ const generateActiveStat = (value) => {
 
 // ===== create click event for the button "generate stats" =====
 $("#generateStats").on("click", function () {
+    console.log("generate stats button clicked. Values:")
+    console.log("origional stats:");
+    console.log(origionalStatArr);
+    console.log("generated stats: ");
+    console.log(generatedStats);
+
     // change the attribute of the button and the text contents
     $("#generateStats").text("Clear")
     // set attribute of "new" button
@@ -104,10 +116,16 @@ $("#generateStats").on("click", function () {
         var statValue = arr => arr.reduce((a, b) => a + b, 0)
         // push them to the generate stats array 
         generatedStats.push(statValue(tempArray))
+        origionalStatArr.push(statValue(tempArray))
     }
 
     // generate stat buttons
     generateStatButtons(generatedStats);
+    console.log("end of generate stats. Values");
+    console.log("origional stats:");
+    console.log(origionalStatArr);
+    console.log("generated stats: ");
+    console.log(generatedStats);
 });
 
 // ===== function to re-work and consolidate the stats 
@@ -258,6 +276,8 @@ $("#abilities").on("click", "#charisma", () => {
 // repace it with a button that adds values back into the generated stats array
 // this prevents people from just generating a new set of stats... Sometimes you can't change your attribues.. thats life, and D&D
 $("#actionButtonDiv").on("click", "#clearAppliedStats", function () {
+    console.log("clear stats button clicked.. Values:");
+    console.log(origionalStatArr);
     // add the items of consolidated array to generated stats array
     generatedStats = origionalStatArr;
     // clear the field
@@ -273,7 +293,27 @@ $("#actionButtonDiv").on("click", "#clearAppliedStats", function () {
     // append the values to the page
     generateAbilities();
     generateStatButtons(origionalStatArr);
-    
 });
+
+// $("#clearAppliedStats").on("click", function () {
+//     // add the items of consolidated array to generated stats array
+//     generatedStats = origionalStatArr;
+//     // clear the field
+//     $("#addStatButton").empty();
+//     // $(".col-4").empty()
+//     attributes.strength = "";
+//     attributes.dexterity = "";
+//     attributes.constitution = "";
+//     attributes.intelligence = "";
+//     attributes.wisdom = "";
+//     attributes.charisma = "";
+
+//     // append the values to the page
+//     generateAbilities();
+//     generateStatButtons(origionalStatArr);
+//     console.log("clear stats button clicked.. Values:")
+//     console.log(origionalStatArr)
+    
+// });
 
 generateAbilities();
