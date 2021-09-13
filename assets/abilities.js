@@ -67,7 +67,7 @@ const generateActiveStat = (value) => {
     // create a button each time
     var statButton = $("<button>");
     // apply attributes
-    statButton.attr("class", "active");
+    statButton.attr("class", "activeStat");
     // apply the text
     statButton.text(value);
     // append the button to the div

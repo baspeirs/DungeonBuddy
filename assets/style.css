@@ -34,10 +34,13 @@ footer {
     text-align: center;
     width: 100%;
 }
-.nav-bar {
+
+/* .nav-bar {
     background-color: black;
     color: white;
-}
+    height: 7vh;
+} */
+
 h1 {
     text-align: center;
     font-family: 'Bebas Neue', cursive;
@@ -100,7 +103,7 @@ h1 {
 }
 /*---------------- Stat Generate Page ------------------- */
 
-.active {
+.activeStat {
     background-color: white;
     width: 107px;
     height: 100px;
