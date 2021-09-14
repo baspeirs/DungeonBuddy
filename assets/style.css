@@ -1,26 +1,29 @@
 html {
     height: 100%;
 }
+
 body {
     background: url("./man-silhouette-in-haunted-forest-K83C75N.jpg") no-repeat center center fixed;
     background-size: cover;
+    /* background-color: rgb(0, 0, 0); */
     min-height: 100%;
     display: flex;
     flex-direction: column;   
+    position: relative;
 }
-/* #background {
-    position: absolute;
-    background: url("./man-silhouette-in-haunted-forest-K83C75N.jpg") no-repeat center center fixed;
-    background-size: cover;
-    height: 100%;
-    width: 100%;
-    opacity: .6;
-    overflow: hidden;
-} */
+
+.background {
+    position: relative;
+    background: rgba(0, 0, 0, 0.4);
+    height: 100vh;
+    width: 100vw;
+}
+
 .row {
     text-align: center;
     opacity: 1;
 }
+
 article {
     min-height: 100%;
 }
@@ -35,12 +38,6 @@ footer {
     width: 100%;
 }
 
-/* .nav-bar {
-    background-color: black;
-    color: white;
-    height: 7vh;
-} */
-
 h1 {
     text-align: center;
     font-family: 'Bebas Neue', cursive;
@@ -53,6 +50,10 @@ h1 {
 /* ---------Dice Roll Page------------- */
 #sub-head-dice {
     margin-bottom: 45px;
+}
+
+#clickDiceText {
+    color: white;
 }
 
 .dice-image {

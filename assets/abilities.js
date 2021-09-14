@@ -91,7 +91,7 @@ $("#generateStats").on("click", function () {
     console.log(generatedStats);
 
     // change the attribute of the button and the text contents
-    $("#generateStats").text("Clear")
+    $("#generateStats").text("Reset Origional Stats")
     // set attribute of "new" button
     $("#generateStats").attr("id", "clearAppliedStats");
     // prevent new stats from being generated (NO CHEATING)

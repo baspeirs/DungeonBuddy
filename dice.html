@@ -1,102 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
     <title>Dungeon Buddy</title>
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-              <a class="navbar-brand" href="index.html"><img src="./assets/Logo.png" alt="dungeon buddy logo"/></a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" href="dice.html">Dice Roll</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="abilities.html">Ability Scores</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="character.html">Random Character</a>
-                  </li>
-                </ul>
-              </div>
+                <a class="navbar-brand" href="index.html"><img src="./assets/Logo.png" alt="dungeon buddy logo" /></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="dice.html">Dice Roll</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="abilities.html">Ability Scores</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="character.html">Random Character</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-          </nav>
-      </header>
-    <!-- background image -->
+        </nav>
+    </header>
+    <!-- background overlay + content -->
+    <div class="background">
+        <article class="container">
 
-    <article class="container">
+            <section class="row">
+                <div class="col-12">
+                    <h1>Dice Roll</h1>
+                </div>
+            </section>
+            <section class="row">
+                <div class="col-12" id="sub-head-dice">
+                    <h2 id="clickDiceText">Click to roll</h2>
+                </div>
+            </section>
 
-        <section class="row">
-            <div class="col-12"><h1>Dice Roll</h1></div>
-        </section>
-        <section class="row">
-            <div class="col-12" id="sub-head-dice"><h2>Select your dice</h2></div>
-        </section>
+            <section class="row">
+                <div class="col-1-lg dice-image" id="img-dice-4"><img src="./assets/4.png" alt="Four sided dice">
+                    <div class="row">
+                        <div class="col-3"></div>
+                        <div class="col-4 dice-type" id="dice-4">
+                            <p>4</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1-lg dice-image" id="img-dice-6"><img src="./assets/6.png" alt="Six sided dice">
+                    <div class="row">
+                        <div class="col-3"></div>
+                        <div class="col-4 dice-type" id="dice-6">
+                            <p>6</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1-lg dice-image" id="img-dice-8"><img src="./assets/8.png" alt="Eight sided dice">
+                    <div class="row">
+                        <div class="col-3"></div>
+                        <div class="col-4 dice-type" id="dice-8">
+                            <p>8</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1-lg dice-image" id="img-dice-10"><img src="./assets/10.png" alt="Ten sided dice">
+                    <div class="row">
+                        <div class="col-3"></div>
+                        <div class="col-4 dice-type" id="dice-10">
+                            <p>10</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1-lg dice-image" id="img-dice-12"><img src="./assets/12.png" alt="Twelve sided dice">
+                    <div class="row">
+                        <div class="col-3"></div>
+                        <div class="col-4 dice-type" id="dice-12">
+                            <p>12</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1-lg dice-image" id="img-dice-20"><img src="./assets/20.png" alt="Twenty sided dice">
+                    <div class="row">
+                        <div class="col-3"></div>
+                        <div class="col-4 dice-type" id="dice-20">
+                            <p>20</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1-lg dice-image" id="img-dice-percent"><img src="./assets/percent.png"
+                        alt="Percentile dice">
+                    <div class="row">
+                        <div class="col-3"></div>
+                        <div class="col-4 dice-type" id="dice-percent">
+                            <p>%</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-        <section class="row">
-            <div class="col-1-lg dice-image" id="img-dice-4"><img src="./assets/4.png" alt="Four sided dice">
-                <div class="row">
-                    <div class="col-3"></div>
-                    <div class="col-4 dice-type" id="dice-4"><p>4</p></div>
+            <!-- text area -->
+            <section class="row">
+                <div class="col-12">
+                    <h1 id="rollValue"></h1>
                 </div>
-            </div>
-            <div class="col-1-lg dice-image" id="img-dice-6"><img src="./assets/6.png" alt="Six sided dice">
-                <div class="row">
-                    <div class="col-3"></div>
-                    <div class="col-4 dice-type" id="dice-6"><p>6</p></div>
-                </div>
-            </div>
-            <div class="col-1-lg dice-image" id="img-dice-8"><img src="./assets/8.png" alt="Eight sided dice">
-                <div class="row">
-                    <div class="col-3"></div>
-                    <div class="col-4 dice-type" id="dice-8"><p>8</p></div>
-                </div>
-            </div>
-            <div class="col-1-lg dice-image" id="img-dice-10"><img src="./assets/10.png" alt="Ten sided dice">
-                <div class="row">
-                    <div class="col-3"></div>
-                    <div class="col-4 dice-type" id="dice-10"><p>10</p></div>
-                </div>
-            </div>
-            <div class="col-1-lg dice-image" id="img-dice-12"><img src="./assets/12.png" alt="Twelve sided dice">
-                <div class="row">
-                    <div class="col-3"></div>
-                    <div class="col-4 dice-type" id="dice-12"><p>12</p></div>
-                </div>
-            </div>
-            <div class="col-1-lg dice-image" id="img-dice-20"><img src="./assets/20.png" alt="Twenty sided dice">
-                <div class="row">
-                    <div class="col-3"></div>
-                    <div class="col-4 dice-type" id="dice-20"><p>20</p></div>
-                </div>
-            </div>
-            <div class="col-1-lg dice-image" id="img-dice-percent"><img src="./assets/percent.png" alt="Percentile dice">
-                <div class="row">
-                    <div class="col-3"></div>
-                    <div class="col-4 dice-type" id="dice-percent"><p>%</p></div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- text area -->
-        <section class="row">
-            <div class="col-12">
-                <h1 id="rollValue"></h1>
-            </div>
 
-        </section>
-    </article>
-
+            </section>
+        </article>
+    </div>
     <footer>
         <p>2020 Bryce Speirs - Application for Dungeons & Dragons</p>
     </footer>
@@ -105,6 +129,9 @@
     <script src="assets/dice.js"></script>
 
 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
